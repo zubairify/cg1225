@@ -1,0 +1,5 @@
+121;Mumbai Indians;Mumbai;25000
+112;Chennai Superkings;Chennai;30000
+123;Kolkata Knightriders;Kolkata;27500
+212;Royal Challengers;Bangalore;30000
+231;Rajasthan Royals;Rajasthan;29000
