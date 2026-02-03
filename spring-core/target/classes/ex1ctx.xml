@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean id="str" class="java.lang.String">
+		<constructor-arg value="Aloha Spring" />
+	</bean>
+	
+	<bean id="hi" class="ex1.Hello">
+		<property name="greeting" ref="str" />
+		<!-- <constructor-arg ref="str" /> -->
+	</bean>
+
+	<!-- <bean id="hi" class="ex1.Hello"> -->
+		<!-- Invoking setter method = Setter value injection -->
+		<!-- <property name="greeting" value="Hello Spring" /> -->
+		<!-- Invoking parameterised constructor = Constructor value injection -->
+		<!-- <constructor-arg value="Bonjour Spring" />
+	</bean> -->
+</beans>
