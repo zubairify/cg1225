@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Pattern;
 public class ProductDTO {
 	@Min(value = 1000, message = "Product code must be at least 4 digits")
 	private int code;
-	@Pattern(regexp = "[A-Z][a-z ]{4,}", message = "Invalid product name")
+	@Pattern(regexp = "[A-Z][A-Za-z0-9 ]{4,}", message = "Invalid product name")
 	private String prodName;
 	@Min(value = 99, message = "Price must be minimum 99")
 	@Max(value = 99999, message = "Price cannot exceed 99999")
