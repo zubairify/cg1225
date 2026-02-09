@@ -9,8 +9,7 @@ import com.zs.entity.Product;
 
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
-	@Query("SELECT p FROM Product p ORDER BY price")
-	List<Product> findByPriceLowToHigh();
+	List<Product> findAllByOrderByPrice();
 	
 	List<Product> findByPriceBetween(double min, double max);
 }

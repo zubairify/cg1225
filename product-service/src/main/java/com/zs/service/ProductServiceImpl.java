@@ -34,7 +34,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<Product> priceLowToHigh() {
-		return repo.findByPriceLowToHigh();
+		return repo.findAllByOrderByPrice();
 	}
 
 	@Override
