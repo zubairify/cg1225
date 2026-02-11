@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.zs.dto.CustomerDTO;
 import com.zs.entity.Customer;
 import com.zs.service.CustomerService;
+import com.zs.vo.OrderVO;
 
 import jakarta.validation.Valid;
 
@@ -41,5 +42,11 @@ public class CustomerController {
 	public ResponseEntity<List<Customer>> list() {
 		List<Customer> list = service.list();
 		return new ResponseEntity<List<Customer>>(list, HttpStatus.OK);
+	}
+	
+	@GetMapping("/{custId}/orders")
+	public ResponseEntity<List<OrderVO>> orderHistory(@PathVariable int custId) {
+		List<OrderVO> orders = service.orderHistory(custId);
+		return new ResponseEntity<List<OrderVO>>(orders, HttpStatus.OK);
 	}
 }

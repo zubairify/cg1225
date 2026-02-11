@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.zs.dto.CustomerDTO;
 import com.zs.entity.Customer;
+import com.zs.vo.OrderVO;
 
 public interface CustomerService {
 	
@@ -12,6 +13,8 @@ public interface CustomerService {
 	Customer find(int cid);
 	
 	List<Customer> list();
+	
+	List<OrderVO> orderHistory(int cid);
 	
 	static Customer transform(CustomerDTO dto) {
 		Customer c = new Customer();
