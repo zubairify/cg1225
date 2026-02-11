@@ -43,6 +43,7 @@ public class OrderServiceImpl implements OrderService {
 			if (prodVo != null) {
 				OrderedProduct op = new OrderedProduct();
 				op.setCode(prodVo.getCode());
+				op.setOrder(order);
 				products.add(op);
 				order.setAmount(order.getAmount() + prodVo.getPrice());
 			}
