@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import com.zs.error.InvalidLoginException;
 import com.zs.error.InvalidQuestionException;
 import com.zs.error.InvalidQuizException;
+import com.zs.error.InvalidUserException;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -17,6 +18,12 @@ public class GlobalExceptionHandler {
 
 	@ExceptionHandler(exception = InvalidLoginException.class)
 	public ResponseEntity<String> handleInvalidLogin(InvalidLoginException e) {
+		log.error("Invalid login attempt");
+		return new ResponseEntity<String>(e.getMessage(), HttpStatus.NOT_FOUND);
+	}
+	
+	@ExceptionHandler(exception = InvalidUserException.class)
+	public ResponseEntity<String> handleInvalidUser(InvalidUserException e) {
 		log.error("Invalid login attempt");
 		return new ResponseEntity<String>(e.getMessage(), HttpStatus.NOT_FOUND);
 	}
@@ -39,9 +46,10 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
 	}
 	
+	/*
 	@ExceptionHandler(exception = Exception.class)
 	public ResponseEntity<String> ellipsisHandler(Exception e) {
 		log.error("Ellipsis exception handler");
 		return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
-	}
+	} */
 }

@@ -2,6 +2,7 @@ package com.zs.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
@@ -9,7 +10,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -26,6 +26,6 @@ public class Quiz {
 	private List<Question> quests;
 	
 	@JsonManagedReference
-	@OneToOne(mappedBy = "quiz")
-	private Result result;
+	@OneToMany(mappedBy = "quiz")
+	private List<Result> results;
 }

@@ -1,5 +1,6 @@
 package com.zs.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -25,5 +26,5 @@ public class User {
 	
 	@JsonManagedReference
 	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-	private List<Result> results;
+	private List<Result> results = new ArrayList<Result>();
 }

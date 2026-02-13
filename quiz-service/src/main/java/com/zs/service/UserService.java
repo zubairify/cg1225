@@ -8,6 +8,8 @@ public interface UserService {
 
 	User save(UserDTO dto);
 	
+	User find(String userid);
+	
 	User login(LoginDTO dto);
 	
 	static User transform(UserDTO dto) {

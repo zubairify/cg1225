@@ -7,6 +7,7 @@ import com.zs.dto.LoginDTO;
 import com.zs.dto.UserDTO;
 import com.zs.entity.User;
 import com.zs.error.InvalidLoginException;
+import com.zs.error.InvalidUserException;
 import com.zs.repo.UserRepository;
 
 import lombok.extern.log4j.Log4j2;
@@ -28,5 +29,11 @@ public class UserSeviceImpl implements UserService {
 		log.info("User service validating login");
 		return repo.findByLogin(dto.getUserid(), dto.getPasswd()).orElseThrow(
 			() -> new InvalidLoginException("Invalid userid or password"));
+	}
+
+	@Override
+	public User find(String userid) {
+		return repo.findById(userid).orElseThrow(
+				() -> new InvalidUserException("User not found with Id: " + userid));
 	}
 }

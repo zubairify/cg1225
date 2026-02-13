@@ -8,7 +8,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -19,13 +18,13 @@ public class Result {
 	private int resultId;
 	private double score;
 	@Column(length = 10)
-	private String result;
+	private String result = "Fail";
 	
 	@JsonBackReference
 	@ManyToOne @JoinColumn(name = "userid")
 	private User user;
 	
 	@JsonBackReference
-	@OneToOne @JoinColumn(name = "quiz_id")
+	@ManyToOne @JoinColumn(name = "quiz_id")
 	private Quiz quiz;
 }
