@@ -25,6 +25,15 @@ public class Result {
 	private User user;
 	
 	@JsonBackReference
-	@ManyToOne @JoinColumn(name = "quiz_id")
+	@ManyToOne @JoinColumn(name = "quiz_id", insertable = false, updatable = false)
 	private Quiz quiz;
+	
+	@Column(name = "quiz_id")
+	private int quizId;
+	
+	public void setQuiz(Quiz quiz) {
+		this.quiz = quiz;
+		if(quiz != null)
+			this.quizId = quiz.getQuizId();
+	}
 }

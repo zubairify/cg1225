@@ -10,12 +10,16 @@ import com.zs.entity.Flight;
 import com.zs.error.FlightNotFoundException;
 import com.zs.repo.FlightRepository;
 
+import jakarta.transaction.Transactional;
+import jakarta.transaction.Transactional.TxType;
+
 @Service
 public class FlightServiceImpl implements FlightService {
 
 	@Autowired
 	private FlightRepository repo;
 	
+	@Transactional(value = TxType.REQUIRED)
 	@Override
 	public Flight save(FlightDTO f) {
 		return repo.save(FlightService.transform(f));

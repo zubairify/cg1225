@@ -13,6 +13,11 @@ import com.zs.entity.Result;
 import com.zs.entity.User;
 import com.zs.repo.ResultRespository;
 
+/**
+ * This class represents Quiz test service.
+ * @author Zubair
+ * @version 1.0.1
+ */
 @Service
 public class TestServiceImpl implements TestService {
 
@@ -33,20 +38,20 @@ public class TestServiceImpl implements TestService {
 		Result result = new Result();
 		User usr = userService.find(dto.getUserid());
 		Quiz quiz = quizService.find(dto.getQuizId());
-		double score = 0.0;
+		int score = 0;
 		List<AttemptDTO> attempted = dto.getAttempts();
 		for(AttemptDTO atmpt : attempted) {
 			Question quest = questService.find(atmpt.getQuestId());
 			if(quest.getRightAns() == atmpt.getAnsId()) {
-				System.out.println("-- Score added");
-				score += 10;
+				score ++;
 			}
 		}
 		
-		result.setScore(score);
-		if(score >= 60)
+		double percent = (score * 100) / attempted.size();
+		if(percent >= 60)
 			result.setResult("Pass");
 		
+		result.setScore(percent);
 		result.setUser(usr);
 		result.setQuiz(quiz);
 		
